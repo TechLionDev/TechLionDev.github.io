@@ -16,9 +16,23 @@ const Page = async () => {
       revalidate: 60,
     },
   }).then((response) => response.json());
+  projects = projects.sort(
+    (
+      a: { pushed_at: string | number | Date },
+      b: { pushed_at: string | number | Date },
+    ) => {
+      // Parse the stringified dates into Date objects
+      const dateA = new Date(a.pushed_at);
+      const dateB = new Date(b.pushed_at);
+
+      // Compare the timestamps of the dates
+      return dateA.getTime() - dateB.getTime();
+    },
+  );
+  projects = projects.reverse();
   return (
     <>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 place-items-center gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map(async (project: Project, idx: number) => {
           let languagesJSON = (await fetch(project.languages_url, {
             cache: "no-store",
@@ -50,7 +64,7 @@ const Page = async () => {
                       ) {
                         return null;
                       }
-                      if (idx > 3) return null;
+                      if (idx >= 3) return null;
                       return (
                         <span
                           key={idx}
