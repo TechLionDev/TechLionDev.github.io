@@ -1,14 +1,15 @@
+import About from "@/components/client/About";
+import Education from "@/components/client/Education";
+import Skills from "@/components/client/Skills";
+
 const Page = () => {
-    return (
-        <>
-        </>
-    );
-}
+  return (
+    <>
+        <About />
+        <Skills />
+        <Education />
+    </>
+  );
+};
 
 export default Page;
-
-export async function generateMetadata() {
-    return {
-      title: 'Home | Jeremiah\'s Portfolio',
-    }
-}
