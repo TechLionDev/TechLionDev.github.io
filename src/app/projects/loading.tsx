@@ -4,13 +4,31 @@ const Loading = () => {
   return (
     <>
       <div className="grid place-items-center gap-6 md:hidden lg:hidden">
-        <ProjectCardSkeleton />
+      <ProjectCardSkeleton />
+
+      <ProjectCardSkeleton />
+
+      <ProjectCardSkeleton />
       </div>
       <div className="hidden grid-cols-2 place-items-center gap-6 md:grid lg:hidden">
         <ProjectCardSkeleton />
         <ProjectCardSkeleton />
+
+        <ProjectCardSkeleton />
+        <ProjectCardSkeleton />
+
+        <ProjectCardSkeleton />
+        <ProjectCardSkeleton />
       </div>
       <div className="hidden grid-cols-3 place-items-center gap-6 md:hidden lg:grid">
+        <ProjectCardSkeleton />
+        <ProjectCardSkeleton />
+        <ProjectCardSkeleton />
+
+        <ProjectCardSkeleton />
+        <ProjectCardSkeleton />
+        <ProjectCardSkeleton />
+
         <ProjectCardSkeleton />
         <ProjectCardSkeleton />
         <ProjectCardSkeleton />
