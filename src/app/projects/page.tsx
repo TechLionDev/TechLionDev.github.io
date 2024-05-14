@@ -1,21 +1,17 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
 const Page = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  let projects = await fetch("https://api.github.com/users/TechLionDev/repos", {
-    cache: "no-store",
-    next: {
-      revalidate: 60,
-    },
-  }).then((response) => response.json());
+  await new Promise((resolve) => setTimeout(resolve, 2500));
+  let projects = await fetch("https://api.github.com/users/TechLionDev/repos").then((response) => response.json());
   projects = projects.sort(
     (
       a: { pushed_at: string | number | Date },
@@ -34,12 +30,7 @@ const Page = async () => {
     <>
       <div className="grid grid-cols-1 place-items-center gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map(async (project: Project, idx: number) => {
-          let languagesJSON = (await fetch(project.languages_url, {
-            cache: "no-store",
-            next: {
-              revalidate: 60,
-            },
-          }).then(async (response) => await response.json())) as Record<
+          let languagesJSON = (await fetch(project.languages_url).then(async (response) => await response.json())) as Record<
             string,
             number
           >;
